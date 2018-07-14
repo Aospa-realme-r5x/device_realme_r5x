@@ -373,7 +373,6 @@ PRODUCT_PACKAGES += \
     rild \
     libjson \
     librmnetctl \
-    libxml2 \
     libprotobuf-cpp-full
 
 PRODUCT_PACKAGES += \
@@ -423,9 +422,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # Tetheroffload
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml \
-    libipanat \
-    liboffloadhal
+    IPACM_cfg.xml
 
 # Thermal
 PRODUCT_PACKAGES += \
