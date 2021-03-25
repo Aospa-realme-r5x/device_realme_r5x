@@ -282,6 +282,11 @@ PRODUCT_PACKAGES += \
     FrameworksOverlayR5x \
     TetheringCOverlayR5x
 
+# Perf
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.perf@2.2 \
+    vendor.qti.hardware.perf@2.2.vendor
+
 # Platform
 TARGET_BOARD_PLATFORM := trinket
 
