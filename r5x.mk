@@ -241,6 +241,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+# Kernel (Prebuilt)
+TARGET_PREBUILT_KERNEL := device/realme/r5x-kernel/Image.gz-dtb
+
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel
+
+PRODUCT_VENDOR_KERNEL_HEADERS := device/realme/r5x-kernel/kernel-headers
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.lights-service.r5x
