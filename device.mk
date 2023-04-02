@@ -379,10 +379,6 @@ $(call inherit-product, $(LOCAL_PATH)/app/RealmeDirac/dirac.mk)
 PRODUCT_PACKAGES += \
     RealmeParts
 
-# Remove Unwanted Packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.4 \
