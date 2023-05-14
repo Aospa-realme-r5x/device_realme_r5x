@@ -448,6 +448,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service
 
+# VNDK
+NEED_AIDL_NDK_PLATFORM_BACKEND := true
+
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
