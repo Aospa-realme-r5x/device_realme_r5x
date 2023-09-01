@@ -1,10 +1,11 @@
 #
-# Copyright (C) 2023 Project 404
+# Copyright (C) 2023 Paranoid Android
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 OVERRIDE_PRODUCT_COMPRESSED_APEX := false
+
 
 # Call proprietary blob setup
 $(call inherit-product, vendor/realme/r5x/r5x-vendor.mk)
@@ -83,6 +84,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     vendor.qti.hardware.camera.device@1.0.vendor \
+    android.hidl.memory.block@1.0.vendor \
     libcamera2ndk_vendor \
     libstdc++.vendor
 
@@ -171,14 +173,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.memory.block@1.0.vendor \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0.vendor \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0.vendor
-
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:system/etc/permissions/privapp-permissions-hotword.xml
@@ -206,6 +200,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     set_baseband.sh \
+    init.qti.dcvs.sh \
     ueventd.qcom.rc
 
 # IRSC
@@ -352,10 +347,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
 
-# Seccomp policy
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/seccomp,$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy)
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service.multihal
@@ -390,9 +381,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/thermal/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
-# Speed profile services and wifi-service to reduce RAM and storage.
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -423,9 +411,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libqdMetaData.vendor \
     vendor.display.config@2.0
-
-#PRODUCT_BOOT_JARS += \
-    WfdCommon
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
