@@ -91,10 +91,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
-# Configstore
-PRODUCT_PACKAGES += \
-    disable_configstore
-
 # Crypto
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.volume.filenames_mode=aes-256-cts
@@ -317,6 +313,9 @@ PRODUCT_PACKAGES += \
     BluetoothOverlayR5x \
     ApertureOverlay
 
+# Platform
+TARGET_BOARD_PLATFORM := trinket
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti \
@@ -356,13 +355,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
     $(LOCAL_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml
-
-# RealmeDirac
-$(call inherit-product, $(LOCAL_PATH)/app/RealmeDirac/dirac.mk)
-
-# RealmeParts
-PRODUCT_PACKAGES += \
-    RealmeParts
 
 # RIL
 PRODUCT_PACKAGES += \
