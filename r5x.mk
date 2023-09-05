@@ -222,8 +222,6 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.rc \
-    init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.target.rc \
     set_baseband.sh \
@@ -360,6 +358,9 @@ PRODUCT_PACKAGES += \
     libjson
 
 # QTI
+TARGET_COMMON_QTI_COMPONENTS := \
+    usb
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
@@ -434,14 +435,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/thermal/,$(TARGET_COPY_OUT_VENDOR)/etc)
-
-# USB
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # Vibrator
 PRODUCT_PACKAGES += \
